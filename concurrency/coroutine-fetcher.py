@@ -7,8 +7,9 @@ async def fetcher(session, url):
         return await response.text()
 
 
+# 싱글 스레드에서 동시성 구현
 async def main():
-    urls = ["https://naver.com", "https://google.com", "https://instagram.com"] * 5
+    urls = ["https://naver.com", "https://google.com", "https://instagram.com"]
 
     async with aiohttp.ClientSession() as session:
         result = await asyncio.gather(*[fetcher(session, url) for url in urls])
