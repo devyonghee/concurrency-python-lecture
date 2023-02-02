@@ -9,7 +9,7 @@ class NaverBookScraper:
     NAVER_CLIENT_SECRET = get_secret('NAVER_CLIENT_SECRET')
 
     @staticmethod
-    def fetch(session, url, headers):
+    async def fetch(session, url, headers):
         async with session.get(url, headers=headers) as response:
             if response.status == 200:
                 result = await response.json()
@@ -30,7 +30,6 @@ class NaverBookScraper:
             all_data = await asyncio.gather(
                 *[NaverBookScraper.fetch(session, api['url'], api['headers']) for api in apis]
             )
-            print(all_data)
             result = []
             for data in all_data:
                 if data is not None:
