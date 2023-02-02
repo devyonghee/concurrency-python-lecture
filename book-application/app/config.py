@@ -20,5 +20,5 @@ def get_secret(
         raise EnvironmentError(f"set the {key} environment variable")
 
 
-if __name__ == '__main__':
-    print(get_secret('hello'))
+MONGO_DB_NAME = get_secret('MONGO_DB_NAME')
+MONGO_DB_URL = get_secret('MONGO_DB_URL')

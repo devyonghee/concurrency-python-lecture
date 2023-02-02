@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  python-mongodb:
+    image: mongo
+    restart: always
+    volumes:
+      - ./data/mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - "27017:27017"
